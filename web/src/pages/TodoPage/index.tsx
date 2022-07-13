@@ -4,6 +4,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { api } from "../../services/api";
 
 import { toast } from "react-toastify";
+import { Plus, SignOut } from "phosphor-react";
 
 type Todo = {
   _id: string;
@@ -102,25 +103,49 @@ export function TodoPage() {
   }, [createdTodo]);
 
   return (
-    <div>
-      <h1>Todos</h1>
-      <button onClick={handleLogout}>Log out</button>
+    <div className="animation-fade ">
+      <header className="border-b-zinc-100 border-[1px] header-shadow flex items-center justify-between px-8 py-4">
+        <h1 className="font-bold text-zinc-800 text-[2.4rem] tracking-wider">
+          my_todos
+        </h1>
+        <button
+          className="font-medium text-2xl text-zinc-900 flex items-center gap-4 cursor-pointer hover:brightness-[.85] transition-all duration-150 p-3 rounded-md bg-white"
+          onClick={handleLogout}
+        >
+          <SignOut weight="bold" color="#222" size={26} />
+          Log out
+        </button>
+      </header>
 
-      <form>
-        <div className="input-field">
-          <input
-            type="text"
-            value={todoText}
-            onChange={(e) => setTodoText(e.target.value)}
-          />
-          <button type="submit" onClick={submitNewTodo}>
-            +
-          </button>
-        </div>
-      </form>
+      <main className="mt-16 flex items-center justify-between w-[80vw]">
+        <form className="w-full flex items-center justify-center">
+          <div className="flex items-center gap-4">
+            <input
+              type="text"
+              className="p-3 border-[1px] text-2xl w-[60rem] rounded-md border-zinc-700"
+              value={todoText}
+              placeholder="Type your new todo..."
+              onChange={(e) => setTodoText(e.target.value)}
+            />
+            <button
+              className="hover:brightness-90 bg-white transition-all duration-150 p-1 border-[1px] border-zinc-900 rounded-md"
+              type="submit"
+              onClick={submitNewTodo}
+            >
+              <Plus weight="bold" size={24} color="#222" />
+            </button>
+          </div>
+        </form>
+
+        <button
+          className="font-medium hover:brightness-90 bg-white transition-all duration-150 p-3 border-[1px] border-zinc-900 rounded-xl w-[15rem]"
+          onClick={deleteAllTodos}
+        >
+          Clear all todos
+        </button>
+      </main>
 
       <section className="todos">
-        <button onClick={deleteAllTodos}>Clear all todos</button>
         {todos !== null && todos.length > 0 ? (
           <>
             {todos.map((todo) => (
