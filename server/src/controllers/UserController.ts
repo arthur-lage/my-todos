@@ -4,6 +4,11 @@ import User from "../models/User";
 
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import {
+  validateEmail,
+  validateName,
+  validatePassword,
+} from "../utils/validators";
 
 export const UserController = {
   async getAll(req: Request, res: Response) {
@@ -28,6 +33,13 @@ export const UserController = {
         return res
           .status(400)
           .json({ message: "You must provide a password." });
+
+      if (!validateName(name))
+        return res.status(400).json({ message: "Invalid email/password" });
+      if (!validateEmail(email))
+        return res.status(400).json({ message: "Invalid email/password" });
+      if (!validatePassword(password))
+        return res.status(400).json({ message: "Invalid email/password" });
 
       const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -63,6 +75,11 @@ export const UserController = {
         return res
           .status(400)
           .json({ message: "You must provide a password." });
+
+      if (!validateEmail(email))
+        return res.status(400).json({ message: "Invalid email/password" });
+      if (!validatePassword(password))
+        return res.status(400).json({ message: "Invalid email/password" });
 
       const emailExists = await User.findOne({ email });
 
@@ -120,6 +137,9 @@ export const UserController = {
       const { id } = req.user!;
 
       const currentUser = await User.findById(id);
+
+      if (!currentUser)
+        return res.status(401).json({ message: "Invalid user id" });
 
       const currentUserInfo = {
         id: currentUser?._id,

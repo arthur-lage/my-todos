@@ -1,6 +1,9 @@
 import { FormEvent, useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
 import { useAuth } from "../../hooks/useAuth";
 import { api } from "../../services/api";
+
+import { toast } from "react-toastify";
 
 type Todo = {
   _id: string;
@@ -41,6 +44,8 @@ export function TodoPage() {
       setCreatedTodo(newTodoInfo);
     } catch (err) {
       console.log(err);
+      //@ts-ignore
+      toast.error(err.response.data.message, toastOptions);
     }
   }
 
@@ -146,6 +151,8 @@ export function TodoPage() {
           <h2>You have no todos yet!</h2>
         )}
       </section>
+
+      <ToastContainer />
     </div>
   );
 }
