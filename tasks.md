@@ -1,4 +1,4 @@
-[] - Fix problems while trying to create new todo
+[x] - Fix problems while trying to create new todo
 [X] - Persist login when page is refreshed
 [] - Filter todos by completed
 [x] - Improve form validation in server and client
@@ -9,4 +9,3 @@
 [x] - Create button to show password
 [x] - Reset text field when to-do is submitted
 [x] - Only send request to server if user has typed something
-[] - Implement chakra ui in the project
