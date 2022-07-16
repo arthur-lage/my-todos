@@ -29,18 +29,15 @@ export const TodoController = {
         userId: id,
       };
 
-      const createdTodo = await Todo.create(newTodo);
+      await Todo.create(newTodo);
 
-      const createdTodoInfo = {
-        id: createdTodo._id,
-        text: createdTodo.text,
-        completed: createdTodo.completed,
-        userId: createdTodo.userId,
-      };
+      const todos = await Todo.find({
+        userId: id,
+      });
 
       return res
         .status(200)
-        .json({ createdTodoInfo, message: "Todo created successfully" });
+        .json({ todos, message: "Todo created successfully" });
     } catch (err: any) {
       console.log(err);
       return res.status(500).json({ message: err.message });
@@ -56,17 +53,18 @@ export const TodoController = {
 
       const newCompletedProperty = currentTodo?.completed ? false : true;
 
-      await Todo.updateOne(
-        {
-          id: todoId,
-          userId: id,
-        },
+      await Todo.findByIdAndUpdate(
+        todoId,
         {
           completed: newCompletedProperty,
         }
       );
 
-      return res.status(200).json({ newCompletedProperty, message: "Ok" });
+      const todos = await Todo.find({
+        userId: id,
+      });
+
+      return res.status(200).json({ todos, message: "Ok" });
     } catch (err: any) {
       console.log(err);
       return res.status(500).json({ message: err.message });
