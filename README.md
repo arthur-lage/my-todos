@@ -68,3 +68,5 @@ touch .env
 
 npm install && npm run dev
 ```
+
+Made with 💜 by Arthur Lage
