@@ -38,18 +38,12 @@ In this project, I used the following technologies:
 
 ---
 
-## 🔗 Use the App
-
-If you wish to use the application, click the link below:
-
-[my_todos](https://my-todos-al.vercel.app)
-
 ## ⬇ Download the project
 
 If you wish to download the project, follow the steps below:
 
 ```bash
-git clone https://github.com/arthur-lage/todo-manager-v2.git
+git clone https://github.com/arthur-lage/my_todos.git
 
 cd my-todos
 
