@@ -20,10 +20,10 @@ export function Todo({
     <>
       <div
         key={_id}
-        className="min-h-32 hover:bg-gray-300 cursor-pointer px-2 py-2 bg-white w-full flex items-center justify-between text-3xl"
+        className="min-h-32 hover:bg-gray-300 cursor-pointer px-2 py-3 bg-white dark:bg-[#252525] dark:hover:bg-[#303030] transition-all duration-150 w-full flex items-center justify-between text-3xl"
       >
         <span
-          className="max-w-[70rem] block break-words w-full"
+          className="max-w-[70rem] block break-words w-full dark:text-white text-zinc-900"
           style={{
             textDecoration: `${completed ? "line-through" : ""}`,
           }}
@@ -32,13 +32,13 @@ export function Todo({
         </span>
         <div className="flex items-center gap-4">
           <button
-            className="flex items-center justify-center p-2 bg-white rounded-md hover:brightness-[0.85] transition-all duration-150"
+            className="flex items-center justify-center p-2 bg-white dark:bg-[#303030]  rounded-md hover:brightness-[0.85] transition-all duration-150"
             onClick={() => toggleCompleted(_id)}
           >
             <Check size={24} weight="bold" className="text-blue-500" />
           </button>
           <button
-            className="flex items-center justify-center p-2 bg-white rounded-md hover:brightness-[0.85] transition-all duration-150"
+            className="flex items-center justify-center p-2 bg-white dark:bg-[#303030]  rounded-md hover:brightness-[0.85] transition-all duration-150"
             onClick={() => deleteTodoById(_id)}
           >
             <X size={24} weight="bold" className="text-red-500" />

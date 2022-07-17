@@ -2,6 +2,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { RevealPasswordButton } from "../../components/RevealPasswordButton";
+import { ThemeToggler } from "../../components/ThemeToggler";
 import { useAuth } from "../../hooks/useAuth";
 import { api } from "../../services/api";
 import {
@@ -60,7 +61,8 @@ export function Register() {
         handleSetToken(res.data.token);
       })
       .catch((err) => {
-        console.log(err);
+        //@ts-ignore
+        toast.error(err.response.data.message, toastOptions);
       });
   }
 
@@ -69,18 +71,20 @@ export function Register() {
   }, []);
 
   return (
-    <div className="animation-fade flex flex-col items-center justify-center h-[100vh] gap-8">
-      <h1 className="font-bold text-zinc-800 text-[3.2rem] tracking-wider">
+    <div className="animation-fade transition-all duration-150 bg-white dark:bg-[#252525] flex flex-col items-center justify-center h-[100vh] gap-8">
+      <ThemeToggler />
+
+      <h1 className="font-bold text-zinc-800 dark:text-white text-[3.2rem] tracking-wider">
         my_todos
       </h1>
 
-      <h2 className="font-medium text-zinc-700 text-[2.4rem] tracking-normal">
+      <h2 className="font-medium text-zinc-700 dark:text-white text-[2.4rem] tracking-normal">
         Register
       </h2>
 
-      <div className="opacity-30 absolute top-[-15rem] right-[-20rem] w-[64rem] h-[64rem] bg-blue-700 rounded-full"></div>
-      <div className="opacity-40 absolute bottom-[-15rem] left-[-20rem] w-[40rem] h-[40rem] bg-blue-600 rounded-full"></div>
-      <div className="opacity-60 absolute bottom-[40rem] left-[20rem] w-[20rem] h-[20rem] bg-blue-600 rounded-full"></div>
+      <div className="opacity-30 dark:opacity-20 absolute top-[-15rem] right-[-20rem] w-[64rem] h-[64rem] bg-blue-700 rounded-full"></div>
+      <div className="opacity-40 dark:opacity-20 absolute bottom-[-15rem] left-[-20rem] w-[40rem] h-[40rem] bg-blue-600 rounded-full"></div>
+      <div className="opacity-60 dark:opacity-10 absolute bottom-[40rem] left-[20rem] w-[20rem] h-[20rem] bg-blue-600 rounded-full"></div>
 
       <form className="flex flex-col gap-12" onSubmit={handleSubmitForm}>
         <div>
@@ -94,7 +98,7 @@ export function Register() {
         </div>
         <div>
           <input
-            type="email"
+            type="text"
             className="p-3 border-2 text-2xl w-[30rem] rounded-md border-zinc-700"
             placeholder="Type your email here..."
             value={email}
@@ -116,7 +120,10 @@ export function Register() {
             setIsShowingPassword={setIsShowingPassword}
           />
         </div>
-        <Link className="text-zinc-900 hover:underline text-2xl" to="/login">
+        <Link
+          className="text-zinc-900 dark:text-white hover:underline text-2xl"
+          to="/login"
+        >
           Already have an account? Login
         </Link>
 

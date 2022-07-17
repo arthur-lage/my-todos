@@ -9,35 +9,39 @@ import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { TodoPage } from "./pages/TodoPage";
 
+import { ThemeProvider } from "./contexts/ThemeContext";
+
 import "./styles.css";
 
 export function App() {
   const { currentUser } = useAuth();
 
   return (
-    <AuthProvider>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            currentUser ? (
-              <Navigate to="/dashboard" />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route
-          path="/dashboard"
-          element={
-            <PrivateRoute>
-              <TodoPage />
-            </PrivateRoute>
-          }
-        />
-      </Routes>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              currentUser ? (
+                <Navigate to="/dashboard" />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <TodoPage />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }

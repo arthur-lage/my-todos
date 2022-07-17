@@ -17,9 +17,9 @@ export const RevealPasswordButton = ({
   return (
     <button {...rest} type="button" onClick={toggleRevealPassword}>
       {isShowingPassword ? (
-        <EyeSlash weight="bold" size={20} color="#222" />
+        <EyeSlash weight="bold" size={20} className="text-zinc-800 dark:text-white" />
       ) : (
-        <Eye weight="bold" size={20} color="#222" />
+        <Eye weight="bold" size={20} className="text-zinc-800 dark:text-white" />
       )}
     </button>
   );
