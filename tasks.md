@@ -1,7 +1,7 @@
 [x] - Fix problems while trying to create new todo
 [X] - Persist login when page is refreshed
 [x] - Save theme on page reload
-[] - Make app responsible to mobile devices
+[x] - Make app responsible to mobile devices
 [x] - Improve form validation in server and client
 [x] - Check if name is valid
 [x] - Check if email is valid
