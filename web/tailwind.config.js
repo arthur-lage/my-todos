@@ -5,6 +5,9 @@ module.exports = {
     extend: {
       screens: {
         mxl: { max: "1140px" },
+        desktop: { max: "1050px" },
+        tablet: { max: "670px" },
+        phone: { max: "480px" },
         small: { max: "425px" },
       },
     },

@@ -15,18 +15,23 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   const [isDarkModeOn, setIsDarkModeOn] = useState<boolean>(false);
 
   function handleSetIsDarkModeOn() {
+    localStorage.setItem("my_todos:theme", JSON.stringify(!isDarkModeOn));
     setIsDarkModeOn(!isDarkModeOn);
   }
 
   useEffect(() => {
-    if(isDarkModeOn) {
-      document.documentElement.classList.add("dark")
-      localStorage.setItem("my_todos:theme", JSON.stringify(true))
+    if (JSON.parse(String(localStorage.getItem("my_todos:theme"))) == true) {
+      setIsDarkModeOn(true);
     } else {
-      document.documentElement.classList.remove("dark")
-      localStorage.setItem("my_todos:theme", JSON.stringify(false))
+      setIsDarkModeOn(false);
     }
-  }, [isDarkModeOn])
+
+    if (isDarkModeOn) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDarkModeOn]);
 
   const value = {
     isDarkModeOn,

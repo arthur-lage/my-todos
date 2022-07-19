@@ -65,9 +65,9 @@ export function Login() {
     <div className="animation-fade duration-150 transition-all bg-white dark:bg-[#252525] flex flex-col items-center justify-center h-[100vh] gap-8">
       <ThemeToggler />
 
-      <div className="opacity-30 dark:opacity-20 absolute top-[-15rem] right-[-20rem] w-[64rem] h-[64rem] bg-blue-700 rounded-full"></div>
-      <div className="opacity-40 dark:opacity-20 absolute bottom-[-15rem] left-[-20rem] w-[40rem] h-[40rem] bg-blue-600 rounded-full"></div>
-      <div className="opacity-60 dark:opacity-10 absolute bottom-[40rem] left-[20rem] w-[20rem] h-[20rem] bg-blue-600 rounded-full"></div>
+      <div className="pointer-events-none opacity-30 dark:opacity-20 absolute tablet:hidden desktop:top-[-25rem] desktop:right-[-40rem] top-[-15rem] right-[-20rem] w-[64rem] h-[64rem] bg-blue-700 rounded-full"></div>
+      <div className="pointer-events-none opacity-40 dark:opacity-20 absolute tablet:hidden desktop:bottom-[-25rem] desktop:left-[-40rem] bottom-[-15rem] left-[-20rem] w-[40rem] h-[40rem] bg-blue-600 rounded-full"></div>
+      <div className="pointer-events-none opacity-60 dark:opacity-10 absolute tablet:hidden desktop:bottom-[60rem] desktop:left-[40rem] bottom-[40rem] left-[20rem] w-[20rem] h-[20rem] bg-blue-600 rounded-full"></div>
 
       <h1 className="font-bold dark:text-white text-zinc-800 text-[3.2rem] tracking-wider">
         my_todos
@@ -80,7 +80,7 @@ export function Login() {
       <form className="flex flex-col gap-12" onSubmit={handleSubmitForm}>
         <div>
           <input
-            className="p-3 border-2 text-2xl w-[30rem] rounded-md border-zinc-700"
+            className="p-3 border-2 text-2xl w-[30rem] tablet:w-[25rem] rounded-md border-zinc-700"
             type="text"
             placeholder="Type your email here..."
             value={email}
@@ -89,7 +89,7 @@ export function Login() {
         </div>
         <div className="flex items-center gap-4">
           <input
-            className="p-3 border-2 text-2xl w-[30rem] rounded-md border-zinc-700"
+            className="p-3 border-2 text-2xl w-[30rem] tablet:w-[25rem] rounded-md border-zinc-700"
             type={isShowingPassword ? "text" : "password"}
             placeholder="Type your password here..."
             value={password}
