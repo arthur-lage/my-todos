@@ -82,10 +82,6 @@ export function Register() {
         Register
       </h2>
 
-      <div className="pointer-events-none opacity-30 dark:opacity-20 absolute tablet:hidden desktop:top-[-25rem] desktop:right-[-40rem] top-[-15rem] right-[-20rem] w-[64rem] h-[64rem] bg-blue-700 rounded-full"></div>
-      <div className="pointer-events-none opacity-40 dark:opacity-20 absolute tablet:hidden desktop:bottom-[-25rem] desktop:left-[-40rem] bottom-[-15rem] left-[-20rem] w-[40rem] h-[40rem] bg-blue-600 rounded-full"></div>
-      <div className="pointer-events-none opacity-60 dark:opacity-10 absolute tablet:hidden desktop:bottom-[60rem] desktop:left-[40rem] bottom-[40rem] left-[20rem] w-[20rem] h-[20rem] bg-blue-600 rounded-full"></div>
-
       <form className="flex flex-col gap-12" onSubmit={handleSubmitForm}>
         <div>
           <input
