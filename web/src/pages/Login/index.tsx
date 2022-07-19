@@ -57,12 +57,8 @@ export function Login() {
       });
   }
 
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-  }, []);
-
   return (
-    <div className="animation-fade duration-150 transition-all bg-white dark:bg-[#252525] flex flex-col items-center justify-center h-[100vh] gap-8">
+    <div className="animation-fade duration-150 transition-all bg-white dark:bg-[#252525] flex flex-col items-center justify-center min-h-[100vh] gap-8">
       <ThemeToggler />
 
       <h1 className="font-bold dark:text-white text-zinc-800 text-[3.2rem] tracking-wider">
